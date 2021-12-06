@@ -1,0 +1,175 @@
+<script>
+
+    // Некая сеть фастфуда предлагает несколько видов гамбургеров:
+    // Маленький (50 рублей, 20 калорий).
+    // Большой (100 рублей, 40 калорий).
+    // Гамбургер может быть с одним из нескольких видов начинок (обязательно):
+    // С сыром (+10 рублей, +20 калорий).
+    // С салатом (+20 рублей, +5 калорий).
+    // С картофелем (+15 рублей, +10 калорий).
+    // Дополнительно гамбургер можно посыпать приправой (+15 рублей, +0 калорий) и полить майонезом (+20 рублей, +5 калорий). 
+    // Напишите программу, рассчитывающую стоимость и калорийность гамбургера. Можно использовать примерную архитектуру класса со следующей страницы, но можно использовать и свою.
+
+    //========== Размер ==============
+
+    const sizeBig = {
+        size: 'Большой',
+        price: '100',
+        calories: '40'
+    };
+
+    const sizeSmall = {
+        size: 'Маленький',
+        price: '50',
+        calories: '20'
+    };
+
+
+    // ========= Начинка ===============
+
+    const fillCheese = {
+        filling: 'сыр',
+        price: '10',
+        calories: '20'
+    };
+
+    const fillSalad = {
+        filling: 'салат',
+        price: '20',
+        calories: '5'
+    };
+
+    const fillPatato = {
+        filling: 'картофель',
+        price: '15',
+        calories: '10'
+    };
+
+
+    // =========== Экстра =============
+
+    const extraSpices = {
+        extra: 'Приправа',
+        price: '15',
+        calories: '0'
+    };
+
+    const extraMayo = {
+        extra: 'Майонез',
+        price: '20',
+        calories: '5'
+    };
+
+
+    // Переменные подсчета
+
+    let total = 0;
+    let totalCalories = 0;
+
+
+    class Hamburger {
+
+        constructor(size, filling = fillCheese) {
+            let fillArr = [];
+            fillArr.push(filling);
+            this._size = size;
+            this._filling = fillArr;
+        }
+
+
+        // Добавить начинку
+        addFilling(filling) {
+            this._filling.push(filling);
+        }
+
+
+        // Добавить экстра (соус, приправы)
+        addExtra(extra) {
+            this._extra = extra;
+        }
+
+
+        // Удалить начинку
+        removeFilling(filling) {
+
+            for (let i = 0; i < this._filling.length; i++) {
+                if (this._filling.length == 1) {
+
+                } else if (this._filling[i] == filling) {
+                    this._filling.splice(i, 1);
+                }
+            }
+        }
+
+
+        // Узнать начинку
+        getFillings() {
+            console.log(this._filling);
+        }
+
+
+        // Узнать размер 
+        getSize() {
+            console.log(this._size);
+        }
+
+
+        // Считаем стоимость 
+        calculatePrice() {
+
+            let size = +(this._size.price);
+            let extra = +(this._extra.price);
+            let fillingTotal = 0;
+
+            this._filling.forEach(item => {
+                fillingTotal = +(item.price) + fillingTotal;
+            });
+            return total = size + extra + fillingTotal;
+
+        }
+
+
+        // Считаем калорийность 
+        calculateCalories() {
+
+            let size = +(this._size.calories);
+            let extra = +(this._extra.calories);
+            let fillingTotal = 0;
+
+            this._filling.forEach(item => {
+                fillingTotal = +(item.calories) + fillingTotal;
+            });
+            return totalCalories = size + extra + fillingTotal;
+        }
+    }
+
+
+
+    // Создаем базовый гамбургер
+    const burger = new Hamburger(sizeBig, fillCheese);
+
+
+
+    // Производим разные манипуляции
+
+    console.log(burger);  // Не могу понять почему лог до манипуляций отображает результат который идет после
+
+    burger.addFilling(fillPatato);
+    burger.addExtra(extraMayo);
+    burger.addFilling(fillSalad);
+    burger.removeFilling(fillCheese);
+    burger.removeFilling(fillPatato);
+    burger.removeFilling(fillSalad);
+    burger.getFillings();
+    burger.getSize();
+
+    console.log(burger);  // 
+
+    // считаем сумму и калорийность
+    burger.calculatePrice();
+    burger.calculateCalories();
+
+    console.log(total);
+    console.log(totalCalories);
+
+</script>

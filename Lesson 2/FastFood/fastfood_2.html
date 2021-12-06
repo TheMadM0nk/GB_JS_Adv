@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="size-box">
+
+        <input id="1" type="radio" name="size" value="sizeBig"> Big Size
+        <input id="2" type="radio" name="size" value="sizeSmall"> Small Size
+    </div>
+
+    <div class="filling-box">
+        <input id="3" type="radio" name="filling" value="fillSalad"> Salad
+        <!-- <input id="4" type="radio" name="filling" value="fillPatato"> patato -->
+    </div>
+
+
+    <button type="submit" onclick="createBurger()"> Burger </button>
+    <!-- <button type="submit" onclick="showTotal()"> Total </button> -->
+
+    <script>
+
+        const sizeBig = {
+            size: 'Большой',
+            price: '100',
+            calories: '40'
+        };
+
+        const sizeSmall = {
+            size: 'Маленький',
+            price: '50',
+            calories: '20'
+        };
+
+        const fillSalad = {
+            filling: 'салат',
+            price: '20',
+            calories: '5'
+        };
+
+        class hamburger {
+            constructor(size, filling) {
+                this.size = size;
+                this.filling = filling;
+            }
+
+            showTotal(arr) {
+                let totalPrice = 0;
+                arr.forEach(item => {
+                    totalPrice = +(item.price) + totalPrice;
+                });
+                return totalPrice
+            };
+
+            calcCalories(arr) {
+
+                let totalCalories = 0;
+                arr.forEach(item => {
+                    totalCalories = +(item.calories) + totalCalories;
+                });
+                return totalCalories
+            }
+
+        }
+
+        let total = [];
+
+        function createBurger() {
+            let arr = document.getElementsByTagName('input');
+            let burgerSize, burgerFilling;
+
+            for (i = 0; i < arr.length; i++) {
+
+                if (arr[i].checked) {
+
+                    if (arr[i].value == 'sizeBig') {
+
+                        burgerSize = sizeBig;
+                        total.push(sizeBig);
+                    } else if (arr[i].value == 'sizeSmall') {
+
+                        burgerSize = sizeSmall;
+                        total.push(sizeSmall);
+                    } else {
+
+                        burgerFilling = fillSalad;
+                        total.push(fillSalad);
+                    };
+                };
+            }
+
+            const burger = new hamburger(burgerSize, burgerFilling);
+
+            console.log(burger);
+            console.log(total);
+            console.log(burger.showTotal(total));
+            console.log(burger.calcCalories(total));
+        }
+
+        // function showTotal() {
+        //     let totalPrice = 0;
+        //     total.forEach(item => {
+        //         totalPrice = +(item.price) + totalPrice;
+        //     });
+        //     console.log(totalPrice);
+
+
+        // };
+
+                    // const doc = document.querySelector('body');
+                    // doc.insertAdjacentHTML("beforeend", `
+
+                    //     <div>
+                    //         <p>Value: ${arr[i].value}</p>
+                    //     </div>                    
+                    // `)
+
+    </script>
+</body>
+
+</html>
