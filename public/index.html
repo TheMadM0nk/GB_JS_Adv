@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="app" class="page">
+        <div class="page-content">
+
+            <header>
+                <div class="nav-style">
+                    <div class="nav__content container">
+                        <div class="logo_search">
+                            <img src="img/logo.svg" alt="logo" style="padding-right: 40px;">
+
+                            <!-- ======== Поиск ======== -->
+
+                            <search-form></search-form>
+
+                            <!-- ======================= -->
+
+                        </div>
+
+                        <div class="nav-menu">
+                            <div class="menu-btn" @click="show=!show">
+                                <img class="nav-menu__ico" src="img/menu.svg">
+                            </div>
+                            <div class="acc-btn">
+                                <img class="nav-menu__ico" src="img/acc-nt.svg">
+                            </div>
+
+                            <!-- ============ Корзина =============== -->
+
+                            <cart ref="cart"></cart>
+
+                            <!-- ==================================== -->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-wrap">
+                    <div class="banner">
+
+                        <div class="banner-imgbox">
+                            <img src="img/banner_men.png" alt="men-banner" class="banner__img">
+                        </div>
+
+                        <div class="banner-titel">
+                            <div class="brand-line"></div>
+                            <div class="brand-text">
+                                <p class="brand-text__big">THE BRAND</p>
+                                <p class="brand-text__small">OF LUXERIOUS <span class="fshn-clr">FASHION</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-dark" v-if="show">
+                        <div class="menu-block">
+
+                            <img src="img/close-ico.svg" alt="close-ico" @click="show=!show" class="menu_close">
+                            <p class="menu-title">MENU</p>
+
+                            <p class="menu-group">MAN</p>
+                            <ul>
+                                <li><a href="#" class="menu-section">Accessories</a></li>
+                                <li><a href="#" class="menu-section">Bags</a></li>
+                                <li><a href="#" class="menu-section">Denim</a></li>
+                                <li><a href="#" class="menu-section">T-Shirts</a></li>
+                            </ul>
+
+                            <p class="menu-group">WOMAN</p>
+                            <ul>
+                                <li><a href="#" class="menu-section">Accessories</a></li>
+                                <li><a href="#" class="menu-section">Jackets & Coats</a></li>
+                                <li><a href="#" class="menu-section">Polos</a></li>
+                                <li><a href="#" class="menu-section">T-Shirts</a></li>
+                                <li><a href="#" class="menu-section">Shirts</a></li>
+                            </ul>
+
+                            <p class="menu-group">KIDS</p>
+                            <ul>
+                                <li><a href="#" class="menu-section">Accessories</a></li>
+                                <li><a href="#" class="menu-section">Jackets & Coats</a></li>
+                                <li><a href="#" class="menu-section">Polos</a></li>
+                                <li><a href="#" class="menu-section">T-Shirts</a></li>
+                                <li><a href="#" class="menu-section">Shirts</a></li>
+                                <li><a href="#" class="menu-section">Bags</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="merch-group container">
+                <div class="merch-group-box">
+                    <div class="merch-group-box__item">
+                        <img src="img/for_women.svg" alt="for-women" class="merch-img__short">
+                        <div class="merch-text">
+                            <div class="merch-text__top">30% OFF</div>
+                            <div class="merch-text__bottom">FOR WOMEN</div>
+                        </div>
+                    </div>
+
+                    <div class="merch-group-box__item">
+                        <img src="img/for_men.svg" alt="for-men" class="merch-img__short">
+                        <div class="merch-text">
+                            <div class="merch-text__top">HOT DEAL</div>
+                            <div class="merch-text__bottom">FOR MEN</div>
+                        </div>
+                    </div>
+
+                    <div class="merch-group-box__item">
+                        <img src="img/for_kids.svg" alt="for-kids" class="merch-img__short">
+                        <div class="merch-text">
+                            <div class="merch-text__top">NEW ARRIVALS</div>
+                            <div class="merch-text__bottom">FOR KIDS</div>
+                        </div>
+                    </div>
+
+                    <div class="merch-group-box__item merch-group-box__accesories">
+                        <img src="img/accesories.svg" alt="accesories" class="merch-img__wide">
+                        <div class="merch-text merch-text__acc-es">
+                            <div class="merch-text__top">LUXIROUS & TRENDY</div>
+                            <div class="merch-text__bottom">ACCESORIES</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="featured container">
+
+                <div class="featured__text">
+                    <p class="ft__top">Fetured Items</p>
+                    <p class="ft__bottom">Shop for items based on what we featured in this week</p>
+                </div>
+
+                <!-- ================== Товары ========================== -->
+
+                <products ref="products"></products>
+
+                <!-- ==================================================== -->
+
+                <div class="browse-all">
+                    <a href="#">
+                        <p class="browse-txt">Browse All Product</p>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="footer-box">
+
+            <div class="footer-top">
+                <div class="footer-top-container container">
+                    <div class="ftc-content">
+                        <img src="img/delivery_ico.svg" alt="delivery-ico" class="ftc-ico">
+                        <p class="ftc-txt__top">Free Delivery</p>
+                        <p class="ftc-txt__bottom">Worldwide delivery on all. Authorit tively morph next-generation
+                            innov tion with extensive models.</p>
+                    </div>
+                    <div class="ftc-content">
+                        <img src="img/discount_ico.svg" alt="discount-ico" class="ftc-ico">
+                        <p class="ftc-txt__top">Sales & discounts</p>
+                        <p class="ftc-txt__bottom">Worldwide delivery on all. Authorit tively morph next-generation
+                            innov tion with extensive models.</p>
+                    </div>
+                    <div class="ftc-content">
+                        <img src="img/crown_ico.svg" alt="crown-ico" class="ftc-ico">
+                        <p class="ftc-txt__top">Quality assurance</p>
+                        <p class="ftc-txt__bottom">Worldwide delivery on all. Authorit tively morph next-generation
+                            innov tion with extensive models.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-middle">
+                <div class="footer-middle-container container">
+                    <div class="info">
+                        <img src="img/face.png" alt="photo">
+                        <p class="info-txt">“Vestibulum quis porttitor dui! Quisque viverra nunc mi, <i>a pulvinar purus
+                                condimentum</i>“</p>
+                    </div>
+                    <div class="subscribe">
+                        <p class="sub-txt__top">SUBSCRIBE</p>
+                        <p class="sub-txt__bottom">FOR OUR NEWLETTER AND PROMOTION</p>
+                        <form action="" class="sub-submit">
+                            <input type="email" placeholder="Enter Your Email" class="input-email">
+                            <input type="submit" value="Subscribe" class="input-button">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="foot-b-container container">
+                    <div class="foot-b-rights">
+                        <p class="rights">© 2021 Brand All Rights Reserved.</p>
+                    </div>
+                    <div class="fb-media">
+                        <a href="#"><img src="img/fb-ico.png" alt="facebook-ico"></a>
+                        <a href="#"><img src="img/insta-ico.png" alt="instagram-ico"></a>
+                        <a href="#"><img src="img/pin-ico.png" alt="pinterest-ico"></a>
+                        <a href="#"><img src="img/twit-ico.png" alt="twitter-ico"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <!-- <script src="js/ProductComponent.js"></script>
+    <script src="js/CartComponent.js"></script>
+    <script src="js/SearchComponent.js"></script>
+    <script src="js/ErrorComponent.js"></script>
+    <script src="js/main.js"></script> -->
+
+    <script src="js/webpack.js"></script>
+
+</body>
+
+</html>
